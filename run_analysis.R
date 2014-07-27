@@ -25,8 +25,3 @@ trn$activity = factor(trn_act$V1,levels = activities$V1,labels = activities$V2)
 #union of 2 data frames
 tidy_data=rbind(tst, trn)
 write.table(tidy_data, "tidy_data.txt",row.names=FALSE)
-
-names(tidy_data)
-tidy_data2 = data.frame()
-tidy_data[tidy_data$subject,tidy_data$activity]
-tidy_data$subject
