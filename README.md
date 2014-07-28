@@ -10,3 +10,7 @@ According to assignment run_analysis.R does the following
 * Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
 In order to script correct work current directory must include 'UCI HAR Dataset' subdirectory with propertly data within it.
+
+
+
+P.S. Sorry for late posting of the merged and tidy data sets. If it's matter files are available in repo.
