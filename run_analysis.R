@@ -24,4 +24,9 @@ trn$activity = factor(trn_act$V1,levels = activities$V1,labels = activities$V2)
 
 #union of 2 data frames
 tidy_data=rbind(tst, trn)
+
+#extracting of measurements on the mean and standard deviation for each measurement
+n=names(tidy_data)
+tidy_data <- tidy_data[,c(c("subject","activity"),n[grepl("-mean()",n) | grepl("-std()",n)])]
+
 write.table(tidy_data, "tidy_data.txt",row.names=FALSE)
