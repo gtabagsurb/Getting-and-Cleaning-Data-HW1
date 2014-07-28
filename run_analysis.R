@@ -23,10 +23,17 @@ tst$activity = factor(tst_act$V1,levels = activities$V1,labels = activities$V2)
 trn$activity = factor(trn_act$V1,levels = activities$V1,labels = activities$V2)
 
 #union of 2 data frames
-tidy_data=rbind(tst, trn)
+merged_data=rbind(tst, trn)
 
 #extracting of measurements on the mean and standard deviation for each measurement
-n=names(tidy_data)
-tidy_data <- tidy_data[,c(c("subject","activity"),n[grepl("-mean()",n) | grepl("-std()",n)])]
+n=names(merged_data)
+merged_data <- merged_data[,c(c("subject","activity"),n[grepl("-mean()",n) | grepl("-std()",n)])]
 
+#output merged data set
+write.table(merged_data, "merged_data.txt",row.names=FALSE)
+
+#calculating average of each variable for each activity and each subject
+tidy_data<-ddply(merged_data, c("subject","activity"), function(x) colMeans(x[c(colnames(merged_data)[3:81])]))
+
+#output tidy data set
 write.table(tidy_data, "tidy_data.txt",row.names=FALSE)
